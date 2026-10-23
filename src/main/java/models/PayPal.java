@@ -1,12 +1,14 @@
 package models;
 
+import config.Config;
+import org.hw8.Notification;
 import org.hw8.Payment;
 
 public class PayPal extends Payment {
     private double balance = 0;
 
-    public PayPal(double balance) {
-        this.balance = balance;
+    public PayPal(Notification notification) {
+        this.notification = notification;
     }
 
     public boolean chargeAccount(double charge) {
@@ -18,12 +20,14 @@ public class PayPal extends Payment {
         }
     }
 
-    public void refundAccount(double amount) {
+    @Override
+    public void addFunds(double amount) {
         this.balance += amount;
     }
 
     @Override
     public String makePayment(double amount) {
-        return "";
+        if(chargeAccount(amount)) return notification.sendNotification(Config.PAYPAL_SUCCESS_MESSAGE);
+        else return notification.sendNotification(Config.PAYPAL_FAILURE_MESSAGE);
     }
 }

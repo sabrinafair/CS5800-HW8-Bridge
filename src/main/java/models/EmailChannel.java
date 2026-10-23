@@ -1,17 +1,16 @@
 package models;
 
+import config.Config;
 import org.hw8.Notification;
 import org.hw8.Payment;
 
-public class EmailChannel extends Notification {
+public class EmailChannel implements Notification {
 
-    public EmailChannel(Payment paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public EmailChannel() {
     }
 
     @Override
-    public void sendNotification() {
-        if(this.paymentMethod.paymentSuccess()) System.out.println(this.paymentMethod.paymentSuccessMessage());
-        else System.out.println(this.paymentMethod.paymentFailMessage());
+    public String sendNotification(String message) {
+        return Config.EMAIL_MESSAGE + " " + message;
     }
 }

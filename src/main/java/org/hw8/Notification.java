@@ -1,7 +1,6 @@
 package org.hw8;
 
-public abstract class Notification {
-    protected Payment paymentMethod;
+public interface Notification {
 
-    abstract public void sendNotification();
+    String sendNotification(String message);
 }
