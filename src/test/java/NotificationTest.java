@@ -30,6 +30,33 @@ public class NotificationTest {
     }
 
     @Test
+    public void testPushOnlineSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Online(new PushChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.PUSH_MESSAGE + " " + Config.ONLINE_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testPushCashSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Cash(new PushChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.PUSH_MESSAGE + " " + Config.CASH_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testPushBitcoinSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Bitcoin(new PushChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.PUSH_MESSAGE + " " + Config.BITCOIN_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
     public void testPushPayPalFailure(){
         double initBalance = 0.00;
         double costs = 500.00;
@@ -45,6 +72,33 @@ public class NotificationTest {
         payment = new CreditCard(new PushChannel());
         payment.addFunds(initBalance);
         assertEquals(Config.PUSH_MESSAGE + " " + Config.CREDIT_CARD_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testPushOnlineFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Online(new PushChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.PUSH_MESSAGE + " " + Config.ONLINE_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testPushCashFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Cash(new PushChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.PUSH_MESSAGE + " " + Config.CASH_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testPushBitcoinFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Bitcoin(new PushChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.PUSH_MESSAGE + " " + Config.BITCOIN_FAILURE_MESSAGE, payment.makePayment(costs));
     }
 
     //SMS
@@ -67,6 +121,33 @@ public class NotificationTest {
     }
 
     @Test
+    public void testSMSOnlineSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Online(new SMSChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.SMS_MESSAGE + " " + Config.ONLINE_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testSMSCashSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Cash(new SMSChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.SMS_MESSAGE + " " + Config.CASH_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testSMSBitcoinSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Bitcoin(new SMSChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.SMS_MESSAGE + " " + Config.BITCOIN_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
     public void testSMSPayPalFailure(){
         double initBalance = 0.00;
         double costs = 500.00;
@@ -82,6 +163,33 @@ public class NotificationTest {
         payment = new CreditCard(new SMSChannel());
         payment.addFunds(initBalance);
         assertEquals(Config.SMS_MESSAGE + " " + Config.CREDIT_CARD_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testSMSOnlineFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Online(new SMSChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.SMS_MESSAGE + " " + Config.ONLINE_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testSMSCashFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Cash(new SMSChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.SMS_MESSAGE + " " + Config.CASH_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testSMSBitcoinFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Bitcoin(new SMSChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.SMS_MESSAGE + " " + Config.BITCOIN_FAILURE_MESSAGE, payment.makePayment(costs));
     }
 
     //Email
@@ -104,6 +212,32 @@ public class NotificationTest {
     }
 
     @Test
+    public void testEmailOnlineSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Online(new EmailChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.EMAIL_MESSAGE + " " + Config.ONLINE_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+    @Test
+    public void testEmailCashSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Cash(new EmailChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.EMAIL_MESSAGE + " " + Config.CASH_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testEmailBitcoinSuccess(){
+        double initBalance = 1500.00;
+        double costs = 500.00;
+        payment = new Bitcoin(new EmailChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.EMAIL_MESSAGE + " " + Config.BITCOIN_SUCCESS_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
     public void testEmailPayPalFailure(){
         double initBalance = 0.00;
         double costs = 500.00;
@@ -119,5 +253,31 @@ public class NotificationTest {
         payment = new CreditCard(new EmailChannel());
         payment.addFunds(initBalance);
         assertEquals(Config.EMAIL_MESSAGE + " " + Config.CREDIT_CARD_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+    @Test
+    public void testEmailOnlineFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Online(new EmailChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.EMAIL_MESSAGE + " " + Config.ONLINE_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testEmailCashFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Cash(new EmailChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.EMAIL_MESSAGE + " " + Config.CASH_FAILURE_MESSAGE, payment.makePayment(costs));
+    }
+
+    @Test
+    public void testEmailBitcoinFailure(){
+        double initBalance = 0.00;
+        double costs = 500.00;
+        payment = new Bitcoin(new EmailChannel());
+        payment.addFunds(initBalance);
+        assertEquals(Config.EMAIL_MESSAGE + " " + Config.BITCOIN_FAILURE_MESSAGE, payment.makePayment(costs));
     }
 }
